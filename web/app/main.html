@@ -1,0 +1,86 @@
+<style type="text/css">
+.main-content {
+    height: auto;
+    min-height: 780px;
+    background-size:cover;
+}
+
+.main-footer {
+    margin: 0;
+    height: auto;
+    min-height: 100px;
+    background: #333;
+    font-size: 14px;
+    color: #888;
+}
+.main-footer h3 {
+    margin-bottom: 10px;
+}
+.main-footer p {
+    margin-bottom: 10px;
+}
+.main-footer .pjfun-container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.main-footer .pjfun-footer-content{
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #888;
+}
+
+.main-footer .pjfun-descript-group {
+    margin: 10px 0;
+    text-align: left;
+}
+.main-footer .pjfun-descript-group a{
+    color: #888;
+}
+.main-footer .pjfun-link-icon {
+    font-size: 2.0em;
+}
+
+    
+</style>
+<div class="main-header">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="pjfun-container row container">
+                <div class="col-lg-2 col-md-2">
+                    <div class="pjfun-nav-brand navbar-header">
+                        <a class="navbar-brand" [routerLink]="['/']"><span>首页</span></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="pjfun-nav-content collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li routerLink="/download" routerLinkActive="active"><a [routerLink]="['/download']">下载</a></li>
+                        </ul>
+                    </div>
+                </div>      
+        </div>
+    </nav>      
+</div>
+<div class="main-content">
+    <div class="pjfun-container">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+<div class="main-footer">
+    <div class="pjfun-container container">
+        <div class="pjfun-footer-content row">
+            <div class="col-lg-3 col-md-3">
+                <div class="pjfun-descript-group">
+                    <h3>相关链接</h3>
+                    <ul>
+                        <li><a href="http://www.zhihu.com" title="Jenkins"><i class="pjfun-link-icon icon-jenkins"></i> jenkins任务构造</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="pjfun-footer-copyright row">
+            <p>base on angular framework</p>
+            <p>@2016.11.~</p>
+        </div>  
+    </div>
+</div>

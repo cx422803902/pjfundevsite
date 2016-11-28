@@ -1,0 +1,108 @@
+<style>
+div.main-container {
+    width:auto;
+}
+div.option-row, div.header-row, div.body-row {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+div.option-row, div.option-col{
+    height: 50px;
+}
+div.header-row, div.header-col{
+    height: 30px;
+    line-height: 30px;
+}
+div.body-row, div.body-col {
+    height: 30px;
+    line-height: 30px;
+}
+
+div.header-col, div.body-col{
+    border-style: solid;
+    border-width: 0px 1px 1px 0px;
+}
+div.header-col.fr-fc, div.body-col.fr-fc{
+    border: #000000 solid 1px;
+}
+div.header-col.fr, div.body-col.fr{
+    border-style: solid;
+    border-width: 1px 1px 1px 0px;
+}
+div.header-col.fc, div.body-col.fc{
+    border-style: solid;
+    border-width: 0px 1px 1px 1px;
+}
+
+.selectpicker {
+    width: 200px;
+}
+.option-row label {
+    font-size: 2em;
+    font-weight: bolder;
+}
+.option-row select {
+    font-size: 2em;
+    font-weight : lighter;
+}
+</style>
+
+<div class="main-container">
+    <div class="option-row">
+        <div [ngClass]="options.downloadOption.leftCls"></div>
+        <div class="option-col" [ngClass]="options.downloadOption.columns[0].cls">
+            <label>游戏配置:</label>
+            <select class="selectpicker" (change)="onSelectGameNet($event.target.value)" [(value)]="gameNet">
+                <option value="1">外网测试</option>
+                <option value="2">外网正式</option>
+            </select>
+        </div>
+        <div class="option-col" [ngClass]="options.downloadOption.columns[1].cls">
+            <label>游戏系统:</label>
+            <select class="selectpicker" (change)="onSelectGamePlatform($event.target.value)" [(value)]="gamePlatform">
+                <option value="Android">Android</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="download-table">
+        <div class="header-row">
+            <div [ngClass]="options.downloadItem.leftCls"></div>
+            <div class="header-col" *ngFor="let column of options.downloadItem.columns; let columnIndex = index" [ngClass]="getBorderClass(column.cls, 0, columnIndex)">
+                {{column.data.title}}
+            </div>
+        </div>
+        <div class="body-row" *ngFor="let downloadItem of downloadItems;let rowIndex = index">
+            <div [ngClass]="options.downloadItem.leftCls"></div>
+            <div class="body-col" [ngClass]="getBorderClass(options.downloadItem.columns[0].cls, rowIndex+1, 0)">
+                {{downloadItem.getId()}}
+            </div>
+            <div class="body-col" [ngClass]="getBorderClass(options.downloadItem.columns[1].cls, rowIndex+1, 1)">
+                {{downloadItem.getBranch()}}
+            </div>
+            <div class="body-col" [ngClass]="getBorderClass(options.downloadItem.columns[2].cls, rowIndex+1, 2)">
+                {{downloadItem.getStatus()}}
+            </div>
+            <div class="body-col" [ngClass]="getBorderClass(options.downloadItem.columns[3].cls, rowIndex+1, 3)">
+                {{downloadItem.getTime()}}
+            </div>
+            <div class="body-col" [ngClass]="getBorderClass(options.downloadItem.columns[4].cls, rowIndex+1, 4)">
+            <a href="{{downloadItem.getDownloadLink()}}">{{downloadItem.getLinkName()}}</a>
+            </div>
+        </div>
+    </div>
+
+    <div [ngClass]="options.downloadItem.leftCls"></div>
+    <div class="button-row  btn-group-md" [ngClass]="options.downloadItem.sumCls">
+        <button type="button" class="btn btn-default pull-left" (click)="onClickPageBtn(0)">首页</button>
+        <button type="button" class="btn btn-default pull-left" (click)="onClickPageBtn(curPageIndex-1)">上一页</button>
+        <button *ngFor="let button of getButtons()" type="button" class="btn btn-default pull-left" (click)="onClickPageBtn($event.target.innerHTML)">
+            {{button}}
+        </button>
+        <button type="button" class="btn btn-default pull-left" (click)="onClickPageBtn(curPageIndex+1)">下一页</button>
+        <button type="button" class="btn btn-default pull-left" (click)="onClickPageBtn(-1)">尾页</button>
+    </div>
+</div>
+
+
+

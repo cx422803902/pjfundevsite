@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/">
+    <base target="_blank">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <title>PJFUN Web Site</title>
+
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="global.css">
+</head>
+<body>
+    <main></main>
+    <!--bootstrap-->
+    <script type="text/javascript" src="node_modules/core-js/client/shim.min.js"></script>
+    <script type="text/javascript" src="node_modules/zone.js/dist/zone.js"></script>
+    <script type="text/javascript" src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script type="text/javascript" src="node_modules/systemjs/dist/system.src.js"></script>
+    <script type="text/javascript" src="systemjs.config.js"></script>
+    <script type="text/javascript">
+        <!--bootstrap-->
+        System.import('app')
+            .catch(function(err) {
+                console.error(err);
+            });
+    </script>   
+</body>
+</html>
